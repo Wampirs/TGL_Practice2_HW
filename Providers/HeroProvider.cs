@@ -12,7 +12,7 @@ namespace TGL_Practice2_HW.Providers
 
         public Hero GetRandomHero()
         {
-            return heroes[Random.Shared.Next(heroes.Count+1)];
+            return heroes[Random.Shared.Next(heroes.Count)];
         }
 
         public HeroProvider(IItemProvider _shop)
@@ -33,7 +33,7 @@ namespace TGL_Practice2_HW.Providers
             new DamageSpell("Shrapnell",50,100)};
             Bag sniperItems = new Bag();
             for(int i=0;i<3;i++) sniperItems.TakeItem(shop.GetRandomItem());
-            Hero sniper = new Hero(15, 20, 10, Atribute.Agility, sniperSpels, sniperItems);
+            Hero sniper = new Hero("Sniper",15, 20, 10, Atribute.Agility, sniperSpels, sniperItems);
             return sniper;
         }
     }

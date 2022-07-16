@@ -9,6 +9,7 @@ namespace TGL_Practice2_HW.Models.Base
         private int baseIntelect;
         private int baseDamage = 30;
         private int baseHealth = 100;
+        public string Name { get; set; }
         public int Strength 
         {
             get
@@ -70,8 +71,9 @@ namespace TGL_Practice2_HW.Models.Base
         private Spell[] Spells { get; } = new Spell[4];
         public Bag Bag { get; } = new Bag();
 
-        public Hero(int _strength, int _agility, int _intelect, Atribute _mainAtribute, Spell[] _spells, Bag bag)
+        public Hero(string _name, int _strength, int _agility, int _intelect, Atribute _mainAtribute, Spell[] _spells, Bag bag)
         {
+            Name = _name;
             Strength = _strength;
             Agility = _agility;
             Intelect = _intelect;

@@ -10,7 +10,7 @@ namespace TGL_Practice2_HW.Providers
 
         public Item GetRandomItem()
         {
-            return items[Random.Shared.Next(items.Count+1)];
+            return items[Random.Shared.Next(items.Count)];
         }
         public ItemProvider()
         {
