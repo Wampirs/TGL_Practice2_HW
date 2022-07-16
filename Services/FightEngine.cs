@@ -44,8 +44,8 @@ namespace TGL_Practice2_HW.Services
             string spellName = string.Empty;
             _atacker.Atack(out hitDamage,out spellName,out spellDamage);
             _target.Health -= hitDamage + spellDamage;
-            sb.AppendLine($"{_atacker.Name} dealed {hitDamage} damage. ");
-            if (spellName != string.Empty) sb.AppendLine($"And dealed {spellDamage} from {spellName} spell.");
+            sb.Append($"{_atacker.Name} dealed {hitDamage} damage. ");
+            if (spellName != string.Empty) sb.Append($"And dealed {spellDamage} from {spellName} spell.");
             dialog.Inform(sb.ToString());
         }
         public FightEngine(IUserDialog _dialog)
