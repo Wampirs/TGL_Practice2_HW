@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TGL_Practice2_HW.Providers;
 using TGL_Practice2_HW.Services;
 using TGL_Practice2_HW.Services.Interfaces;
 
@@ -31,6 +32,7 @@ namespace TGL_Practice2_HW
         }
         private static void ConfigureServices(HostBuilderContext context, IServiceCollection services) => services
             .AddServices()
+            .AddProviders()
             ;
     }
 }
