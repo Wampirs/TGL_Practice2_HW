@@ -2,7 +2,7 @@
 
 namespace TGL_Practice2_HW.Models.Base
 {
-    internal abstract class Hero
+    internal class Hero
     {
         private int baseStrenght;
         private int baseAgility;
@@ -48,7 +48,6 @@ namespace TGL_Practice2_HW.Models.Base
             private set=> baseIntelect = value;
         }
         public Atribute MainAtribute { get; private set; }
-
         public int Health => baseHealth + Strength * 10;
         public double Armor => Agility * 0.1428571428571429;
         public int Mana => Intelect * 10;
@@ -68,10 +67,21 @@ namespace TGL_Practice2_HW.Models.Base
                 }
             }
         }
-
         private Spell[] Spells { get; } = new Spell[4];
         public Bag Bag { get; } = new Bag();
+
+        public Hero(int _strength, int _agility, int _intelect, Atribute _mainAtribute, Spell[] _spells, Bag bag)
+        {
+            Strength = _strength;
+            Agility = _agility;
+            Intelect = _intelect;
+            MainAtribute = _mainAtribute;
+            Spells = _spells;
+            Bag = bag;
+        }
+        public Hero() { }
     }
+
 
     internal enum Atribute
     { 
