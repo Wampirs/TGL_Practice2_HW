@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "TGL_Practice2_HW": {
+      "commandName": "Project"
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "environmentVariables": {},
+      "distributionName": ""
+    }
+  }
+}

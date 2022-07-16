@@ -13,6 +13,8 @@ namespace TGL_Practice2_HW.Services
         public static IServiceCollection AddServices(this IServiceCollection services) => services
             .AddTransient<IProgramEngine, ProgramEngine>()
             .AddTransient<IUserDialog, UserDialog>()
+            .AddTransient<IFightEngine,FightEngine>()
+
              ;
 
     }
