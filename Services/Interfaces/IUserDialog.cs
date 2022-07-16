@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TGL_Practice2_HW.Services
+namespace TGL_Practice2_HW.Services.Interfaces
 {
-    internal class ConsolePrinter
+    internal interface IUserDialog
     {
     }
 }
