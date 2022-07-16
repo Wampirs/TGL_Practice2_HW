@@ -23,6 +23,9 @@ namespace TGL_Practice2_HW.Services
             dialog.Inform($"Chosen 2 heroes: {firstHero.Name} and {secondHero.Name}");
             Hero winner = fight.StartDuel(firstHero,secondHero);
             dialog.Inform($"Winner: {winner.Name}");
+            if (dialog.AskBool("Do you want to see heroes info?") == false) return;
+            dialog.Inform(firstHero.ToString());
+            dialog.Inform(secondHero.ToString());
         }
 
         public ProgramEngine(IUserDialog _dialog, IFightEngine _fight, IHeroProvider _tavern)
