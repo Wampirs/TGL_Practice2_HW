@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TGL_Practice2_HW.Services.Interfaces
 {
-    internal interface IEngine
+    internal interface IProgramEngine
     {
+        public void StartGame();
     }
 }
