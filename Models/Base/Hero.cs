@@ -113,6 +113,12 @@ namespace TGL_Practice2_HW.Models.Base
             Bag = bag;
             Health = 100 + Strength;
         }
+
+        //TODO: override ToString method
+        public override string ToString()
+        {
+            return string.Empty;  
+        }
     }
 
 
