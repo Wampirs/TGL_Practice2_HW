@@ -7,5 +7,7 @@
         public string AskString(string _question, string[] _answers);
         public bool AskBool(string _question);
 
+        public void Clear();
+
     }
 }

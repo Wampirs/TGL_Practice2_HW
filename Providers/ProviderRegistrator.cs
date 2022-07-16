@@ -6,7 +6,7 @@ namespace TGL_Practice2_HW.Providers
     internal static class ProviderRegistrator
     {
         public static IServiceCollection AddProviders (this IServiceCollection settings)=>settings
-            .AddTransient<IHeroProvider,HeroProvider> ()
+            .AddSingleton<IHeroProvider,HeroProvider> ()
             .AddTransient<IItemProvider,ItemProvider> ()
             ;
     }

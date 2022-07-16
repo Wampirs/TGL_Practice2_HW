@@ -12,7 +12,9 @@ namespace TGL_Practice2_HW.Providers
 
         public Hero GetRandomHero()
         {
-            return heroes[Random.Shared.Next(heroes.Count)];
+            Hero randomHero = heroes[Random.Shared.Next(heroes.Count)];
+            heroes.Remove(randomHero);
+            return randomHero;
         }
 
         public HeroProvider(IItemProvider _shop)
@@ -24,6 +26,7 @@ namespace TGL_Practice2_HW.Providers
         private void Fill()
         {
             Heroes.Add(CreateSniper());
+            Heroes.Add(CreateMars());
         }
 
         private Hero CreateSniper()
@@ -34,6 +37,16 @@ namespace TGL_Practice2_HW.Providers
             Bag sniperItems = new Bag();
             for(int i=0;i<3;i++) sniperItems.TakeItem(shop.GetRandomItem());
             Hero sniper = new Hero("Sniper",15, 20, 10, Atribute.Agility, sniperSpels, sniperItems);
+            return sniper;
+        }
+        private Hero CreateMars()
+        {
+            Spell[] marsSpels = new Spell[] {
+            new DamageSpell("Spear",100,90),
+            new DamageSpell("Shield",50,60)};
+            Bag marsItems = new Bag();
+            for (int i = 0; i < 3; i++) marsItems.TakeItem(shop.GetRandomItem());
+            Hero sniper = new Hero("Mars", 25, 10, 10, Atribute.Agility, marsSpels, marsItems);
             return sniper;
         }
     }

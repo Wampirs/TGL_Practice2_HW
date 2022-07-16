@@ -17,6 +17,7 @@ namespace TGL_Practice2_HW.Services
         {
             dialog.StartUpInfo();
             if(dialog.AskBool("Start the game?")==false)return;
+            dialog.Clear();
             firstHero = tavern.GetRandomHero();
             secondHero = tavern.GetRandomHero();
             dialog.Inform($"Chosen 2 heroes: {firstHero.Name} and {secondHero.Name}");
