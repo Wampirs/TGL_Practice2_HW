@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TGL_Practice2_HW.Models.Base.Spells;
+﻿using TGL_Practice2_HW.Models.Base.Spells;
 
 namespace TGL_Practice2_HW.Models.Base
 {
@@ -12,8 +7,8 @@ namespace TGL_Practice2_HW.Models.Base
         private int baseStrenght;
         private int baseAgility;
         private int baseIntelect;
-        private int baseDamage;
-        private int baseHealth
+        private int baseDamage = 30;
+        private int baseHealth = 100;
         public int Strength 
         {
             get
@@ -54,7 +49,7 @@ namespace TGL_Practice2_HW.Models.Base
         }
         public Atribute MainAtribute { get; private set; }
 
-        public int Health => Strength * 10;
+        public int Health => baseHealth + Strength * 10;
         public double Armor => Agility * 0.1428571428571429;
         public int Mana => Intelect * 10;
         public int HitDamage 
@@ -64,17 +59,17 @@ namespace TGL_Practice2_HW.Models.Base
                 switch (MainAtribute)
                 {
                     case Atribute.Strenght:
-                        return BaseDamage + Strength;
+                        return baseDamage + Strength;
                     case Atribute.Agility:
-                        return BaseDamage + Agility;
+                        return baseDamage + Agility;
                     case Atribute.Intelect:
-                        return BaseDamage + Intelect;
+                        return baseDamage + Intelect;
                     default: return 0;
                 }
             }
         }
 
-        private Spell[] Spells;
+        private Spell[] Spells { get; } = new Spell[4];
         public Bag Bag { get; } = new Bag();
     }
 
