@@ -13,6 +13,18 @@ namespace TGL_Practice2_HW.Models.Base
         public int AddDamage { get; private set; }
         public int AddArmor { get; private set; }
 
+        public Item(string name, int addStrenght = 0, int addAgility = 0, int addIntelect = 0, int addHealth = 0, int addMana = 0, int addDamage = 0, int addArmor = 0)
+        {
+            Name = name;
+            AddStrenght = addStrenght;
+            AddAgility = addAgility;
+            AddIntelect = addIntelect;
+            AddHealth = addHealth;
+            AddMana = addMana;
+            AddDamage = addDamage;
+            AddArmor = addArmor;
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -27,7 +39,6 @@ namespace TGL_Practice2_HW.Models.Base
             if (AddArmor > 0) sb.AppendLine("X" + $"Bonus armor: {AddArmor}" + "X");
             sb.AppendLine(new string('X', 15));
             return sb.ToString();
-
         }
     }
 }

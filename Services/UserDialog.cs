@@ -51,5 +51,12 @@ namespace TGL_Practice2_HW.Services
             sb.AppendLine("Have fun!");
             Inform(sb.ToString());
         }
+
+        public void Clear()
+        {
+            Console.Clear();
+        }
+
+
     }
 }
