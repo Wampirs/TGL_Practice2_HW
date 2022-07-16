@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TGL_Practice2_HW.Services.Interfaces;
 
 namespace TGL_Practice2_HW.Services
 {
-    internal class FightEngine
+    internal class FightEngine: IFightEngine
     {
     }
 }
