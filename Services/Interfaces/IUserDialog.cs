@@ -6,7 +6,7 @@
         public void Inform(string _info);
         public string AskString(string _question, string[] _answers);
         public bool AskBool(string _question);
-
+        public void WaitAnyKey(string _resonToWait);
         public void Clear();
 
     }

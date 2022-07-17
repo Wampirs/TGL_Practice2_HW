@@ -1,4 +1,6 @@
-﻿namespace TGL_Practice2_HW.Models.Base.Spells
+﻿using System.Text;
+
+namespace TGL_Practice2_HW.Models.Base.Spells
 {
     internal abstract class Spell
     {
@@ -11,6 +13,13 @@
         {
             Name = _name;
             ManaCost = _manaCost;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"{Name}     {ManaCost}\n");
+            return sb.ToString();
         }
     }
 }

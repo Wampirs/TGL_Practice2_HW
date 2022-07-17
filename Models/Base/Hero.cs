@@ -1,4 +1,5 @@
-﻿using TGL_Practice2_HW.Models.Base.Spells;
+﻿using System.Text;
+using TGL_Practice2_HW.Models.Base.Spells;
 
 namespace TGL_Practice2_HW.Models.Base
 {
@@ -7,7 +8,8 @@ namespace TGL_Practice2_HW.Models.Base
         private int baseStrenght;
         private int baseAgility;
         private int baseIntelect;
-        private int health;
+        private int currentHealth;
+        private int currentMana;
         public string Name { get; set; }
         public int Strength 
         {
@@ -48,13 +50,43 @@ namespace TGL_Practice2_HW.Models.Base
             private set=> baseIntelect = value;
         }
         public Atribute MainAtribute { get; private set; }
-        public int Health
+        public int MaxHealth
         {
-            get => health;
-            set => health = value;
+            get
+            {
+                int baseHealth = Strength * 10;
+                int bonusHealth = 0;
+                foreach(Item item in Bag.Items)
+                {
+                    bonusHealth += item.AddHealth;
+                }
+                return baseHealth+ bonusHealth;
+            }
+        }
+        public int CurrentHealth
+        {
+            get => currentHealth;
+            set => currentHealth = value;
         }
         public double Armor => Agility * 0.1428571428571429;
-        public int Mana => Intelect * 10;
+        public int MaxMana
+        {
+            get
+            {
+                int baseMana = Intelect * 10;
+                int bonusMana = 0;
+                foreach(Item item in Bag.Items)
+                {
+                    bonusMana += item.AddMana;
+                }
+                return baseMana+ bonusMana;
+            }
+        }
+        public int CurrentMana
+        {
+            get => currentMana;
+            set => currentMana = value;
+        }
         public int HitDamage 
         {
             get
@@ -98,9 +130,10 @@ namespace TGL_Practice2_HW.Models.Base
             _spellDamage = 0;
             _spellName = string.Empty;
             DamageSpell spellToCast = Spells[Random.Shared.Next(Spells.Length)] as DamageSpell;
-            if (spellToCast.ManaCost > Mana) return;
+            if (spellToCast.ManaCost > CurrentMana) return;
             _spellName = spellToCast.Name;
             _spellDamage = spellToCast.Damage;
+            CurrentMana-=spellToCast.ManaCost;
         }
         public Hero(string _name, int _strength, int _agility, int _intelect, Atribute _mainAtribute, Spell[] _spells, Bag bag)
         {
@@ -111,13 +144,29 @@ namespace TGL_Practice2_HW.Models.Base
             MainAtribute = _mainAtribute;
             Spells = _spells;
             Bag = bag;
-            Health = 100 + Strength;
+            CurrentHealth = MaxHealth;
+            CurrentMana = MaxMana;
         }
 
-        //TODO: override ToString method
         public override string ToString()
         {
-            return string.Empty;  
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"Hero name: {Name}\n");
+            sb.Append($"Health: {CurrentHealth}\\{MaxHealth}\n" +
+                $"Mana: {CurrentMana}\\{MaxMana}\n\n");
+            sb.Append("Atributes:\n" +
+                $"Strenght: {Strength}\n" +
+                $"Agility: {Agility}\n" +
+                $"Intelect: {Intelect}\n" +
+                $"Main atribute: {MainAtribute.ToString()}\n\n");
+            sb.Append($"Hit damage: {HitDamage}\n" +
+                $"Armor: {Armor}\n\n");
+            sb.Append("SPELS:\n" +
+                "Spell name         Mana cost       Damage\n");
+            foreach (var spell in Spells) { sb.Append(spell.ToString()); }
+            sb.Append("\n");
+            sb.Append(Bag.ToString());
+            return StringBuilderExtension.StringInBox(sb.ToString(),'#');
         }
     }
 
