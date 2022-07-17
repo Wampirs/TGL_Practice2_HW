@@ -31,7 +31,7 @@ namespace TGL_Practice2_HW.Services
                 dialog.WaitAnyKey("Press any key to close hero overview");
             }
             Hero winner = fight.StartDuel(firstHero,secondHero);
-            dialog.Inform($"Winner: {winner.Name}");
+            dialog.WaitAnyKey($"Winner: {winner.Name}");
             
         }
 

@@ -28,17 +28,15 @@ namespace TGL_Practice2_HW.Models.Base
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(new string('X', 25));
-            sb.AppendLine("X " + Name + " X");
-            if (AddStrenght > 0) sb.AppendLine("X " + $"Bonus strenght: {AddStrenght}" + " X");
-            if (AddAgility > 0) sb.AppendLine("X " + $"Bonus agility: {AddAgility}" + " X");
-            if (AddIntelect > 0) sb.AppendLine("X " + $"Bonus intelect: {AddIntelect}" + " X");
-            if (AddHealth > 0) sb.AppendLine("X " + $"Bunus health: {AddHealth}" + " X");
-            if (AddMana > 0) sb.AppendLine("X " + $"Bonus Mana: {AddMana}" + " X");
-            if (AddDamage > 0) sb.AppendLine("X " + $"Donus damage: {AddDamage}" + " X");
-            if (AddArmor > 0) sb.AppendLine("X " + $"Bonus armor: {AddArmor}" + " X");
-            sb.AppendLine(new string('X', 25));
-            return sb.ToString();
+            sb.Append($"{Name}\n");
+            if (AddStrenght > 0) sb.Append($"Bonus strenght: {AddStrenght}\n");
+            if (AddAgility > 0) sb.Append($"Bonus agility: {AddAgility}\n");
+            if (AddIntelect > 0) sb.Append($"Bonus intelect: {AddIntelect}\n");
+            if (AddHealth > 0) sb.Append($"Bunus health: {AddHealth}\n");
+            if (AddMana > 0) sb.Append($"Bonus Mana: {AddMana}\n");
+            if (AddDamage > 0) sb.Append($"Bonus damage: {AddDamage}\n");
+            if (AddArmor > 0) sb.Append($"Bonus armor: {AddArmor}\n");
+            return StringBuilderExtension.StringInBox(sb.ToString(),'|','-');
         }
     }
 }

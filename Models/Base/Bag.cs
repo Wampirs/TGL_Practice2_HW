@@ -24,13 +24,12 @@ namespace TGL_Practice2_HW.Models.Base
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(new string('-',14) + "Bag"+ new string('-', 13));
+            sb.Append("BAG:\n");
             foreach(Item item in items)
             {
-                sb.AppendLine(item.ToString());
+                sb.Append(item.ToString());
             }
-            sb.AppendLine(new string('-', 30));
-            return sb.ToString();
+            return StringBuilderExtension.StringInBox(sb.ToString(),'X');
         }
     }
 }

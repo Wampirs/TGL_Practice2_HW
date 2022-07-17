@@ -151,23 +151,22 @@ namespace TGL_Practice2_HW.Models.Base
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(new string('#', 50));
-            sb.AppendLine($"Hero name: {Name}");
-            sb.AppendLine($"Health: {CurrentHealth}\\{MaxHealth}\n" +
-                $"Mana: {CurrentMana}\\{MaxMana}\n");
-            sb.AppendLine("Atributes:\n" +
+            sb.Append($"Hero name: {Name}\n");
+            sb.Append($"Health: {CurrentHealth}\\{MaxHealth}\n" +
+                $"Mana: {CurrentMana}\\{MaxMana}\n\n");
+            sb.Append("Atributes:\n" +
                 $"Strenght: {Strength}\n" +
                 $"Agility: {Agility}\n" +
                 $"Intelect: {Intelect}\n" +
-                $"Main atribute: {MainAtribute.ToString()}\n");
-            sb.AppendLine($"Hit damage: {HitDamage}\n" +
-                $"Armor: {Armor}\n");
-            sb.AppendLine("SPELS:\n" +
-                "Spell name         Mana cost       Damage");
-            foreach (var spell in Spells) { sb.AppendLine(spell.ToString()); }
-            sb.AppendLine(Bag.ToString());
-            sb.AppendLine(new string('#', 50));
-            return sb.ToString();
+                $"Main atribute: {MainAtribute.ToString()}\n\n");
+            sb.Append($"Hit damage: {HitDamage}\n" +
+                $"Armor: {Armor}\n\n");
+            sb.Append("SPELS:\n" +
+                "Spell name         Mana cost       Damage\n");
+            foreach (var spell in Spells) { sb.Append(spell.ToString()); }
+            sb.Append("\n");
+            sb.Append(Bag.ToString());
+            return StringBuilderExtension.StringInBox(sb.ToString(),'#');
         }
     }
 

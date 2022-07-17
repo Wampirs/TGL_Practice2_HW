@@ -13,6 +13,7 @@ namespace TGL_Practice2_HW.Services
             int round = 1;
             while (true)
             {
+                dialog.Clear();
                 dialog.Inform($"ROUND {round}");
                 Atack(_first, _second);
                 if (_second.CurrentHealth <= 0)
@@ -28,11 +29,9 @@ namespace TGL_Practice2_HW.Services
                     winner = _second;
                     break;
                 }
-                dialog.Inform("");
+                dialog.WaitAnyKey("Press key to see next round");
                 round++;
             }
-                        
-
             return winner;
         }
 
@@ -46,7 +45,7 @@ namespace TGL_Practice2_HW.Services
             _target.CurrentHealth -= hitDamage + spellDamage;
             sb.Append($"{_atacker.Name} dealed {hitDamage} damage. ");
             if (spellName != string.Empty) sb.Append($"And dealed {spellDamage} from {spellName} spell.");
-            dialog.Inform(sb.ToString());
+            dialog.Inform( StringBuilderExtension.StringInBox(sb.ToString(),'&','+'));
         }
         public FightEngine(IUserDialog _dialog)
         {

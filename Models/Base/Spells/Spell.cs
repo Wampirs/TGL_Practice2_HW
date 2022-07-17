@@ -18,7 +18,7 @@ namespace TGL_Practice2_HW.Models.Base.Spells
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"{Name}     {ManaCost}");
+            sb.Append($"{Name}     {ManaCost}\n");
             return sb.ToString();
         }
     }
