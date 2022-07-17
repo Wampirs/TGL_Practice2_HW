@@ -15,14 +15,14 @@ namespace TGL_Practice2_HW.Services
             {
                 dialog.Inform($"ROUND {round}");
                 Atack(_first, _second);
-                if (_second.Health <= 0)
+                if (_second.CurrentHealth <= 0)
                 {
                     dialog.Inform($"{_first.Name} killed {_second.Name}");
                     winner = _first;
                     break;
                 }
                 Atack(_second, _first);
-                if (_first.Health <= 0)
+                if (_first.CurrentHealth <= 0)
                 {
                     dialog.Inform($"{_second.Name} killed {_first.Name}");
                     winner = _second;
@@ -43,7 +43,7 @@ namespace TGL_Practice2_HW.Services
             int spellDamage;
             string spellName = string.Empty;
             _atacker.Atack(out hitDamage,out spellName,out spellDamage);
-            _target.Health -= hitDamage + spellDamage;
+            _target.CurrentHealth -= hitDamage + spellDamage;
             sb.Append($"{_atacker.Name} dealed {hitDamage} damage. ");
             if (spellName != string.Empty) sb.Append($"And dealed {spellDamage} from {spellName} spell.");
             dialog.Inform(sb.ToString());

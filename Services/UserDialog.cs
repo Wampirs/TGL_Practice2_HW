@@ -57,6 +57,10 @@ namespace TGL_Practice2_HW.Services
             Console.Clear();
         }
 
-
+        void IUserDialog.WaitAnyKey(string _resonToWait)
+        {
+            Console.WriteLine(_resonToWait);
+            Console.ReadKey();
+        }
     }
 }

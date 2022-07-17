@@ -1,4 +1,6 @@
-﻿namespace TGL_Practice2_HW.Models.Base.Spells
+﻿using System.Text;
+
+namespace TGL_Practice2_HW.Models.Base.Spells
 {
     internal class DamageSpell : Spell
     {
@@ -14,6 +16,13 @@
         {
             Damage = _damage;
             CritChance = _critChance;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"{Name}               {ManaCost}             {Damage}");
+            return sb.ToString();
         }
     }
 }
