@@ -11,7 +11,7 @@ namespace TGL_Practice2_HW.Models.Base
         private int currentHealth;
         private int currentMana;
         public string Name { get; set; }
-        public int Strength 
+        public int Strength
         {
             get
             {
@@ -24,8 +24,9 @@ namespace TGL_Practice2_HW.Models.Base
             }
             private set => baseStrenght = value;
         }
-        public int Agility {
-            get 
+        public int Agility
+        {
+            get
             {
                 int result = 0;
                 foreach (Item item in Bag.Items)
@@ -36,7 +37,7 @@ namespace TGL_Practice2_HW.Models.Base
             }
             private set => baseAgility = value;
         }
-        public int Intelect 
+        public int Intelect
         {
             get
             {
@@ -47,7 +48,7 @@ namespace TGL_Practice2_HW.Models.Base
                 }
                 return result + baseIntelect;
             }
-            private set=> baseIntelect = value;
+            private set => baseIntelect = value;
         }
         public Atribute MainAtribute { get; private set; }
         public int MaxHealth
@@ -56,11 +57,11 @@ namespace TGL_Practice2_HW.Models.Base
             {
                 int baseHealth = Strength * 10;
                 int bonusHealth = 0;
-                foreach(Item item in Bag.Items)
+                foreach (Item item in Bag.Items)
                 {
                     bonusHealth += item.AddHealth;
                 }
-                return baseHealth+ bonusHealth;
+                return baseHealth + bonusHealth;
             }
         }
         public int CurrentHealth
@@ -75,11 +76,11 @@ namespace TGL_Practice2_HW.Models.Base
             {
                 int baseMana = Intelect * 10;
                 int bonusMana = 0;
-                foreach(Item item in Bag.Items)
+                foreach (Item item in Bag.Items)
                 {
                     bonusMana += item.AddMana;
                 }
-                return baseMana+ bonusMana;
+                return baseMana + bonusMana;
             }
         }
         public int CurrentMana
@@ -87,7 +88,7 @@ namespace TGL_Practice2_HW.Models.Base
             get => currentMana;
             set => currentMana = value;
         }
-        public int HitDamage 
+        public int HitDamage
         {
             get
             {
@@ -104,13 +105,13 @@ namespace TGL_Practice2_HW.Models.Base
             }
         }
         private Spell[] Spells { get; } = new Spell[4];
-        public Bag Bag { get; } = new Bag();
+        public IBag Bag { get; } = new Bag();
         public void Atack(out int _hitdamage, out string _castedSpellName, out int _spellDamage)
         {
             int castChance = Random.Shared.Next(100);
             string castedSpellName = string.Empty;
             int castedSpellDamage = 0;
-            if (castChance < 25) CastSpell(out castedSpellName,out castedSpellDamage);
+            if (castChance < 25) CastSpell(out castedSpellName, out castedSpellDamage);
             _hitdamage = HitDamage;
             if (castedSpellName != string.Empty && castedSpellDamage != 0)
             {
@@ -133,7 +134,7 @@ namespace TGL_Practice2_HW.Models.Base
             if (spellToCast.ManaCost > CurrentMana) return;
             _spellName = spellToCast.Name;
             _spellDamage = spellToCast.Damage;
-            CurrentMana-=spellToCast.ManaCost;
+            CurrentMana -= spellToCast.ManaCost;
         }
         public Hero(string _name, int _strength, int _agility, int _intelect, Atribute _mainAtribute, Spell[] _spells, Bag bag)
         {
@@ -166,15 +167,15 @@ namespace TGL_Practice2_HW.Models.Base
             foreach (var spell in Spells) { sb.Append(spell.ToString()); }
             sb.Append("\n");
             sb.Append(Bag.ToString());
-            return StringBuilderExtension.StringInBox(sb.ToString(),'#');
+            return StringBuilderExtension.StringInBox(sb.ToString(), '#');
         }
     }
 
 
     internal enum Atribute
-    { 
+    {
         Strenght,
         Agility,
         Intelect
-    } 
+    }
 }
